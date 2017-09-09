@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Demo App</title>
+    <link rel="stylesheet" media="all" href="main.css">
+</head>
+<body>
+<div class="page" id="myApp">
+    <header class="header">
+        <div class="page-header">
+            <div class="header-brand">Brandname</div>
+            <div class="header-menu">
+                <ul>
+                    <li>Menu Item 1</li>
+                    <li>Menu Item 2</li>
+                    <li>Menu Item 3</li>
+                    <li>Menu Item 4</li>
+                    <li>Menu Item 5</li>
+                    <li>Menu Item 6</li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-sub-header">
+            <span>Filter: </span>
+            <span class="filter-cb pointer" :class="['filter-' + itm]" v-for="itm in uniqueTypes">
+                    <input type="checkbox" :id="itm" :value="itm" v-model="filterArr" class="pointer"/>
+                    <label :for="itm" class="pointer">{{itm}}</label>
+                </span>
+        </div>
+    </header>
+    <div class="page-content">
+        <card :card="item" v-for="item in filterList" :key="item.id"></card>
+    </div>
+</div>
+</body>
+
+<script type="text/x-template" id="card-template">
+    <div class="card-container">
+        <div class="card-image"></div>
+        <div class="card-item">
+            <div class="card-heading">
+                <span class="card-heading-text">{{card.name}}</span>
+                <span class="card-heading-filter filter-cb" :class="['filter-' + card.type]">{{card.category}}</span>
+            </div>
+            <div class="card-content">
+                {{card.content}}
+            </div>
+            <div class="card-action">
+                <span class="filter-fruit-text pointer"> > </span>
+                <a href="#">More Info</a>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script src="vue.min.js"></script>
+<script src="main.js"></script>
+</html>
