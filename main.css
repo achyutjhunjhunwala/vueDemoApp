@@ -149,3 +149,10 @@ li {
 .pointer {
 	cursor: pointer;
 }
+
+/* Media Queries */
+@media (min-width:961px) {
+	.page .page-content .card-container {
+		width: 250px;
+	}
+}
